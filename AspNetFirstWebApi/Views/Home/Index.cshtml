@@ -1,0 +1,42 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+        ViewData["Home"] = "Index";
+}
+     
+                <h2>Index</h2>
+
+            <script src="~/scripts/jquery.js"></script>
+
+        
+
+        <input type="button" value="Get All Employee Data" id="btn1"/>
+
+        <br>
+
+        <div id="ShowData">
+
+
+
+        </div>
+        <script>
+
+            $(document).ready(function () {
+                
+                $("#btn1").click(function () {
+
+                    $getJSON('api/EmployeesData', function (responseData) {
+                        $.each(responseData, function (key, val) {
+
+                            var item = "<h2>" + val + "</h2>";
+                            $(item).appendTo("#ShowData");
+
+                        });
+
+                    });
+
+                });
+
+            });
+        </script>
